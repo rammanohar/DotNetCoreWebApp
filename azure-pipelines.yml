@@ -15,15 +15,12 @@ steps:
     performMultiLevelLookup: true
     includePreviewVersions: true # Required for preview versions
 
-- task: MSBuild@1
-  displayName: 'Build solution $(solution)'
+- task: DotNetCoreCLI@2
+  displayName: Build
   inputs:
-    solution: '$(solution)'
-    msbuildArchitecture: "x64"
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    msbuildArguments: '/p:Deterministic=true'
-    maximumCpuCount: true
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)' # Update this to match your need
 
     
 - task: PublishBuildArtifacts@1
