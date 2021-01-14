@@ -21,7 +21,7 @@ steps:
   displayName: Build
   inputs:
     command: build
-    projects: '**/*.csproj'
+    projects:  $(SolutionPath)
     arguments: '--configuration $(buildConfiguration)' # Update this to match your need
     
 - task: PublishBuildArtifacts@1
